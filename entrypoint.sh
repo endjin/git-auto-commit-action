@@ -21,7 +21,7 @@ EOF
 
 # This section only runs if there have been file changes
 echo "Checking for uncommitted changes in the git working tree."
-if [[ -n $(git status -s) ]]
+if ! [ -z "$(git status --porcelain)" ]
 then
     git_setup
 
