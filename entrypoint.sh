@@ -26,7 +26,7 @@ then
     git_setup
     
     # remove refs/head/ from branch name
-    BRANCH=${INPUT_BRANCH##refs/head/}
+    BRANCH=${INPUT_BRANCH##"refs/head/"}
     
     echo "BRANCH value: $BRANCH";
 
