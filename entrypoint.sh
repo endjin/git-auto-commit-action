@@ -24,7 +24,10 @@ echo "Checking for uncommitted changes in the git working tree."
 if ! [ -z "$(git status --porcelain)" ]
 then
     git_setup
-
+    
+    # remove refs/head/ from branch name
+    INPUT_BRANCH=${INPUT_BRANCH##refs/head/}
+    
     echo "INPUT_BRANCH value: $INPUT_BRANCH";
 
     # Switch to branch from current Workflow run
