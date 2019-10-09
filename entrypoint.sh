@@ -26,18 +26,18 @@ then
     git_setup
     
     # remove refs/head/ from branch name
-    INPUT_BRANCH=${INPUT_BRANCH##refs/head/}
+    BRANCH=${INPUT_BRANCH##refs/head/}
     
-    echo "INPUT_BRANCH value: $INPUT_BRANCH";
+    echo "BRANCH value: $BRANCH";
 
     # Switch to branch from current Workflow run
-    git checkout $INPUT_BRANCH
+    git checkout $BRANCH
 
     git add .
 
     git commit -m "$INPUT_COMMIT_MESSAGE" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>"
 
-    git push --set-upstream origin "HEAD:$INPUT_BRANCH"
+    git push --set-upstream origin "HEAD:$BRANCH"
 else
     echo "Working tree clean. Nothing to commit."
 fi
