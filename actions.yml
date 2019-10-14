@@ -7,6 +7,10 @@ inputs:
   commit_message:
     description: Commit message
     required: true
+  add_path_spec:
+    description: The pathspec for the 'git add' command
+    required: false
+    default: '.'
   branch:
     description: Branch where changes should be pushed too
     required: true
