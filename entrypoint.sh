@@ -25,16 +25,19 @@ if ! [ -z "$(git status --porcelain)" ]
 then
     git_setup
     
-    echo "BRANCH value: $INPUT_BRANCH";
+    # remove refs/head/ from branch name	    echo "BRANCH value: $INPUT_BRANCH";
+    BRANCH=${INPUT_BRANCH##"refs/heads/"}
+    
+    echo "BRANCH value: $BRANCH";
 
     # Switch to branch from current Workflow run
-    git checkout $INPUT_BRANCH
+    git checkout $BRANCH
 
     git add $INPUT_ADD_PATH_SPEC
 
     git commit -m "$INPUT_COMMIT_MESSAGE" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>"
 
-    git push --set-upstream origin "HEAD:$INPUT_BRANCH"
+    git push --set-upstream origin "HEAD:$BRANCH"
 else
     echo "Working tree clean. Nothing to commit."
 fi
