@@ -30,7 +30,7 @@ then
     # Switch to branch from current Workflow run
     git checkout $INPUT_BRANCH
 
-    git add .
+    git add $INPUT_ADD_PATH_SPEC
 
     git commit -m "$INPUT_COMMIT_MESSAGE" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>"
 
