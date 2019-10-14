@@ -25,7 +25,7 @@ if ! [ -z "$(git status --porcelain)" ]
 then
     git_setup
     
-    # remove refs/head/ from branch name	    echo "BRANCH value: $INPUT_BRANCH";
+    # remove refs/head/ from branch name
     BRANCH=${INPUT_BRANCH##"refs/heads/"}
     
     echo "BRANCH value: $BRANCH";
